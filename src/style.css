@@ -1,0 +1,12 @@
+@import url('./styles/nav.css');
+@import url('./styles/mainpage.css');
+@import url('./styles/createpage.css');
+
+html {
+    font: 16px/1.2 sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}

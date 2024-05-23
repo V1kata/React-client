@@ -1,0 +1,147 @@
+.main {
+    background-image: url('../images/mainbackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 20em;
+}
+
+.second-main {
+    background-color: aqua;
+    width: 100vw;
+    padding: 1em 0;
+    margin-bottom: 0;
+}
+
+.sec-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.second-main>h1 {
+    text-align: center;
+}
+
+.profile-data,
+.short-info {
+    flex: 1;
+    padding: 1em;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    max-width: 43em;
+    width: 100%;
+    height: 24em;
+    top: 0;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.wrapper i.button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2.5em;
+    width: 2.5em;
+    background-color: #343f4f;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2.5em;
+    color: #fff;
+    font-size: 15px;
+    transition: all 0.3s linear;
+    z-index: 100;
+    cursor: pointer;
+}
+
+i.button:active {
+    transform: scale(0.94) translateY(-50%);
+}
+
+i#prev {
+    left: 1.8em;
+}
+
+i#next {
+    right: 1.8em;
+}
+
+.image-container {
+    max-width: 31em;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-container .carousel {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    transition: all 0.4s ease;
+}
+
+.carousel img {
+    width: 31em;
+    height: 21.4em;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 10px solid #fff;
+}
+
+footer {
+    width: 100%;
+    background-color: #343f4f;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    padding: 1.35em 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    text-decoration: underline;
+    color: white;
+}
+
+@media (max-width: 1000px) {
+    .sec-wrapper {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        height: 70vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        height: 80vw;
+    }
+
+    i.button {
+        height: 2em;
+        width: 2em;
+        font-size: 12px;
+    }
+
+    .carousel img {
+        width: 31em;
+        height: 21.4em;
+    }
+}
