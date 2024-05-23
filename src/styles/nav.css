@@ -10,6 +10,7 @@ header {
     position: relative;
     display: inline-block;
     margin: 1em 3em;
+    z-index: 1;
 }
 
 .dropdown ul {

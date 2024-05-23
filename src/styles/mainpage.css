@@ -1,17 +1,60 @@
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .main {
     background-image: url('../images/mainbackground.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100vw;
-    height: 20em;
+    width: 100%;
+    height: 40%;
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main h1 {
+    margin: 0;
+    font-size: 2em;
+    background-color: rgba(240, 248, 255, 0.409);
+    padding: 0.3em;
+    border-radius: 15px;
+}
+
+.main p {
+    position: absolute;
+    bottom: 10px;
+    left: 2rem;
+    font-size: 1.4em;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    align-self: flex-start;
 }
 
 .second-main {
-    background-color: aqua;
-    width: 100vw;
+    background-color: #00ffff;
+    width: 100%;
+    height: 73%;
     padding: 1em 0;
-    margin-bottom: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 0.5;
 }
 
 .sec-wrapper {
@@ -20,10 +63,12 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: 1em;
 }
 
 .second-main>h1 {
     text-align: center;
+    margin-bottom: 1em;
 }
 
 .profile-data,
@@ -39,7 +84,6 @@
     max-width: 43em;
     width: 100%;
     height: 24em;
-    top: 0;
     background: #fff;
     align-items: center;
     justify-content: center;
@@ -121,17 +165,34 @@ footer a {
     .sec-wrapper {
         flex-direction: column;
     }
+
+    .main {
+        height: 30%;
+    }
+
+    .main h1 {
+        font-size: 1.5em;
+    }
+
+    .main p {
+        margin-left: 0.5em;
+        font-size: 1em;
+    }
 }
 
 @media (max-width: 768px) {
     .wrapper {
-        height: 70vw;
+        height: 50vw;
+    }
+
+    .main p {
+        left: 0;
     }
 }
 
 @media (max-width: 480px) {
     .wrapper {
-        height: 80vw;
+        height: 60vw;
     }
 
     i.button {
@@ -143,5 +204,9 @@ footer a {
     .carousel img {
         width: 31em;
         height: 21.4em;
+    }
+
+    .main {
+        height: 20%;
     }
 }
