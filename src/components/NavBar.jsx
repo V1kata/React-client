@@ -6,6 +6,7 @@ export function NavBar() {
             <nav className="dropdown">
                 <img src="/images/dropdown.svg" alt="" />
                 <ul>
+                    <li><Link to="/">Home</Link></li>
                     <li><Link to="/create">Create</Link></li>
                     <li><Link to="/catalog">Catalog</Link></li>
                 </ul>
