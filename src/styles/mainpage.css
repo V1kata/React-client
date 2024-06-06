@@ -144,7 +144,7 @@ i#next {
 }
 
 footer {
-    width: 100%;
+    width: 100vw;
     background-color: #343f4f;
     color: #fff;
     text-align: center;

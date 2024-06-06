@@ -8,86 +8,55 @@ import { Music } from "./Form/Music";
 export function Create() {
     const [currentStep, setCurrentStep] = useState(1);
     const [id, setId] = useState(null);
-    const [formValue, setFormValue] = useState({
-        email: '',
-        fName: '',
-        lName: '',
-        phoneNum: '',
-        address: '',
-        avatarImage: null,
-        skills: [{ skill: '', image: null }],
-        projects: [{ project: '', image: null }],
-        music: [{ music: '', image: null }],
-        links: ['']
-    });
 
     const nextStep = () => {
         setCurrentStep(currentStep + 1);
     };
 
-    const addField = (field) => (e) => {
-        e.preventDefault();
-        setFormValue(prevState => ({
-            ...prevState,
-            [field]: [...prevState[field], field === 'links' ? '' : { [field.slice(0, -1)]: '', image: null }]
-        }));
-    };
-
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('email', formValue.email);
-        formData.append('fName', formValue.fName);
-        formData.append('lName', formValue.lName);
-        formData.append('phoneNum', formValue.phoneNum);
-        formData.append('address', formValue.address);
-        if (formValue.avatarImage) {
-            formData.append('avatarImage', formValue.avatarImage);
+    const onSubmitHandler = async (formData, method, url) => {
+        console.log(formData)
+        const formDataObj = new FormData();
+        for (const key in formData) {
+            if (Array.isArray(formData[key])) {
+                formData[key].forEach((value, index) => {
+                    formDataObj.append(`${key}[${index}]`, value);
+                });
+            } else {
+                formDataObj.append(key, formData[key]);
+            }
         }
-        formValue.skills.forEach((item, index) => {
-            formData.append(`skills[${index}][skill]`, item.skill);
-            if (item.image) {
-                formData.append(`skills[${index}][image]`, item.image);
-            }
-        });
-        formValue.projects.forEach((item, index) => {
-            formData.append(`projects[${index}][project]`, item.project);
-            if (item.image) {
-                formData.append(`projects[${index}][image]`, item.image);
-            }
-        });
-        formValue.music.forEach((item, index) => {
-            formData.append(`music[${index}][music]`, item.music);
-            if (item.image) {
-                formData.append(`music[${index}][image]`, item.image);
-            }
-        });
-        formValue.links.forEach((link, index) => {
-            formData.append(`links[${index}]`, link);
-        });
 
-        await fetch('http://localhost:3000/create-portfolio', {
-            method: 'POST',
-            body: formData
-        });
-    };
+        try {
+            let data = await fetch(`http://localhost:3000/${url}`, {
+                method: method,
+                body: formDataObj,
+            });
 
-    const handleNext = () => {
-        nextStep()
+            const res = await data.json();
+            console.log(res);
+
+            if (!id) {
+                setId(res.data.objectId);
+            }
+
+            nextStep()
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     const renderStep = () => {
         switch (currentStep) {
             case 1:
-                return <UserForm nextStep={nextStep} handleNext={handleNext} />;
+                return <UserForm nextStep={nextStep} onSubmitHandler={onSubmitHandler} />;
             case 2:
-                return <SocialNetwork handleNext={handleNext} />;
+                return <SocialNetwork onSubmitHandler={onSubmitHandler} id={id} />;
             case 3:
-                return <Skills />;
+                return <Skills onSubmitHandler={onSubmitHandler} id={id} />;
             case 4:
-                return <Projects />;
+                return <Projects onSubmitHandler={onSubmitHandler} id={id} />;
             case 5:
-                return <Music />;
+                return <Music onSubmitHandler={onSubmitHandler} id={id}/>;
             default:
                 return null;
         }

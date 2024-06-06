@@ -170,3 +170,10 @@ button {
 .button-group .next {
     align-self: flex-end;
 }
+
+dialog {
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "../../hooks/useForm";
 
-export function UserForm({ handleNext }) {
+export function UserForm({ onSubmitHandler }) {
     const { formValues, onChangeHandler, onSubmit } = useForm({
         email: '',
         fName: '',
@@ -9,10 +9,10 @@ export function UserForm({ handleNext }) {
         avatarImage: '',
         phoneNum: '',
         address: ''
-    }, handleNext);
+    }, onSubmitHandler);
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={(e) => onSubmit(e, 'post', 'create-user')}>
             <div className="form-group">
                 <label htmlFor="email">Email*</label>
                 <input type="email" id="email" name="email" required placeholder="Enter your email" value={formValues.email} onChange={onChangeHandler} />
@@ -27,7 +27,7 @@ export function UserForm({ handleNext }) {
             </div>
             <div className="form-group">
                 <label htmlFor="avatarImage">Avatar image</label>
-                <input type="file" id="avatarImage" name="avatarImage" accept="image/*" onChange={onChangeHandler} />
+                <input type="file" id="avatarImage" name="avatarImage" accept="image/*" onChange={onChangeHandler} required />
             </div>
             <div className="form-group">
                 <label htmlFor="phoneNum">Phone number</label>
@@ -37,6 +37,7 @@ export function UserForm({ handleNext }) {
                 <label htmlFor="address">Address (optional)</label>
                 <input type="text" id="address" name="address" placeholder="Enter your address" value={formValues.address} onChange={onChangeHandler} />
             </div>
+            <button>Next</button>
             <button type="submit">Submit</button>
         </form>
     );
