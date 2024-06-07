@@ -1,54 +1,88 @@
-import { useState } from "react"
+import { useState } from "react";
+import { UserForm } from "./Form/UserForm";
+import { SocialNetwork } from "./Form/SocialNetwork";
+import { Skills } from "./Form/Skills";
+import { Projects } from "./Form/Projects";
+import { Music } from "./Form/Music";
+import { useNavigate } from 'react-router-dom'
 
 export function Create() {
-    const [formValue, setFormValue] = useState({
-        username: '',
-        avatarImage: null,
-        skills: '',
-        skillsImage: null,
-        projects: '',
-        projectsImage: null,
-        music: '',
-        musicImage: null,
-        links: ''
-    });
+    const navigate = useNavigate();
+    const [currentStep, setCurrentStep] = useState(1);
+    const [id, setId] = useState(null);
 
-    const handleChange = (e) => {
-        const { name, value, type, files } = e.target;
+    const nextStep = () => {
+        setCurrentStep(currentStep + 1);
+    };
 
-        setFormValue(prevState => ({
-            ...prevState,
-            [name]: type === 'file' ? files[0] : value
-        }));
-    }
+    const onSubmitHandler = async (formData, method, url) => {
+        console.log(formData);
+        const formDataObj = new FormData();
+    
+        for (const key in formData) {
+            if (Array.isArray(formData[key])) {
+                formData[key].forEach((value, index) => {
+                    if (typeof value === 'object' && value !== null) {
+                        for (const subKey in value) {
+                            formDataObj.append(`${key}[${index}][${subKey}]`, value[subKey]);
+                        }
+                    } else {
+                        formDataObj.append(`${key}[${index}]`, value);
+                    }
+                });
+            } else {
+                formDataObj.append(key, formData[key]);
+            }
+        }
+    
+        try {
+            let data = await fetch(`http://localhost:3000/${url}`, {
+                method: method,
+                body: formDataObj,
+            });
+    
+            const res = await data.json();
+    
+            if (!id) {
+                setId(res.data.objectId);
+            }
+    
+            if (currentStep == 5) {
+                navigate('/catalog');
+            } else {
+                nextStep();
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    
 
+    const renderStep = () => {
+        switch (currentStep) {
+            case 1:
+                return <UserForm nextStep={nextStep} onSubmitHandler={onSubmitHandler} />;
+            case 2:
+                return <SocialNetwork onSubmitHandler={onSubmitHandler} id={id} />;
+            case 3:
+                return <Skills onSubmitHandler={onSubmitHandler} id={id} />;
+            case 4:
+                return <Projects onSubmitHandler={onSubmitHandler} id={id} />;
+            case 5:
+                return <Music onSubmitHandler={onSubmitHandler} id={id} />;
+            default:
+                return null;
+        }
+    };
 
     return (
-        <section className="main-two">
-            <form id="userDataForm" onSubmit={onSubmit}>
-                <label htmlFor="username">Username:</label>
-                <input type="text" id="username" name="username" value={formValue.username} onChange={handleChange} required />
+        <section className="main-two background">
 
-                <label htmlFor="avatar">Avatar URL:</label>
-                <input type="file" id="avatarImage" name="avatarImage" onChange={handleChange} accept="image/*" />
-
-                <label htmlFor="skills">Skills (JSON string):</label>
-                <textarea id="skills" name="skills" value={formValue.skills} onChange={handleChange} required></textarea>
-                <input type="file" id="skillsImage" name="skillsImage" onChange={handleChange} accept="image/*" multiple />
-
-                <label htmlFor="projects">Projects (JSON string):</label>
-                <textarea id="projects" name="projects" value={formValue.projects} onChange={handleChange} required></textarea>
-                <input type="file" id="projectsImage" name="projectsImage" onChange={handleChange} accept="image/*" multiple />
-
-                <label htmlFor="music">Music (JSON string):</label>
-                <textarea id="music" name="music" value={formValue.music} onChange={handleChange} required></textarea>
-                <input type="file" id="musicImage" name="musicImage" onChange={handleChange} accept="image/*" multiple />
-
-                <label htmlFor="links">Links (JSON string):</label>
-                <textarea id="links" name="links" value={formValue.links} onChange={handleChange} required></textarea>
-
-                <button type="submit">Submit</button>
-            </form>
+            <div className="container">
+                <h2>Personal Details</h2>
+                {renderStep()}
+            </div>
         </section>
     );
 }
+
