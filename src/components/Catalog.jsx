@@ -19,7 +19,7 @@ export function Catalog() {
                             {value.address ? <p className="address">Address: {value.address}</p> : <></>}
                         </div>
                         <div className="btn-group">
-                            <a href="#" id="details">Details</a>
+                            <a href={`/details/${value.objectId}`} id="details">Details</a>
                         </div>
                     </div>
                 </div>

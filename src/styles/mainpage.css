@@ -1,5 +1,6 @@
 #root {
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -144,7 +145,7 @@ i#next {
 }
 
 footer {
-    width: 100vw;
+    width: 100%;
     background-color: #343f4f;
     color: #fff;
     text-align: center;

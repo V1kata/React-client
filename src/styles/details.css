@@ -1,0 +1,251 @@
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: white;
+}
+
+.fBack,
+.sBack,
+.tBack {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2em;
+}
+
+.fBack {
+    background-image: url('../images/ai-generated-ai-generative-outdoor-nature-adventure-forest-walk-path-road-adventures-background-graphic-art-photo.jpg');
+}
+
+.sBack {
+    background-image: url('../images/images.jpg');
+}
+
+.tBack {
+    background-image: url('../images/music-back.jpg');
+}
+
+
+
+.details h1 {
+    font-size: 2em;
+}
+
+.projects-sec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.projects {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.group-projects {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(80, 147, 53);
+    padding: 1em;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    margin: 10px;
+}
+
+.group-projects h3 {
+    align-self: flex-start;
+}
+
+.group-projects .description.expanded {
+    max-height: none;
+    display: block;
+}
+
+.group-projects a:hover {
+    background-color: rgb(49, 102, 166);
+    text-decoration: underline;
+}
+
+.group-projects .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.group-projects a {
+    color: rgb(212, 232, 193);
+    padding: 0.5em;
+    text-decoration: none;
+}
+
+.first {
+    width: 100%;
+    height: 100%;
+}
+
+.first .data {
+    margin-top: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5em 20%;
+}
+
+.first h1 {
+    margin-right: auto;
+}
+
+.first img {
+    margin-left: auto;
+    max-width: 30%;
+    border-radius: 50%;
+    width: 80%;
+    height: 80%;
+}
+
+.skills {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skills h4 {
+    background-color: grey;
+    padding: 1em;
+    border-radius: 25px;
+}
+
+/* links */
+
+.links-sec {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgba(68, 140, 81, 0.515);
+    padding: 1.6em;
+    gap: 20px;
+    width: 100%;
+}
+
+.links .group-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1em;
+}
+
+.links .group-link img {
+    width: 10em;
+    border-radius: 100%;
+}
+
+.links .group-link h3 {
+    padding-top: 1.5em;
+}
+
+.links .group-link a {
+    text-decoration: none;
+    background-color: lightgreen;
+    padding: .5em;
+}
+
+.links .group-link a:hover {
+    text-decoration: underline;
+    background-color: rgb(43, 151, 43);
+    box-shadow: 2px 2px 5px 0 black;
+    color: white;
+    padding: .5em;
+}
+
+.music-sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.music {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.group-music {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(56, 61, 67, 0.68);
+    margin: 0.5em;
+    padding: 0.5em;
+    width: 100%;
+    max-width: 100em;
+    border-radius: 10px;
+}
+
+.left {
+    flex: 1 0 50%;
+    align-self: flex-start;
+}
+
+.left img {
+    width: 40%;
+    margin: auto 0;
+    border-radius: 50%;
+    position: relative;
+    left: 30%;
+    transform: translateX(-50%);
+}
+
+.right {
+    flex: 1 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 10px;
+}
+
+.right p {
+    margin: 5px 0;
+    color: white;
+}
+
+.right a {
+    text-decoration: none;
+    background-color: rgba(99, 162, 63, 0.738);
+    padding: 0.5em;
+    border-radius: 25px;
+    color: rgb(215, 187, 187);
+}
+
+.right a:hover {
+    box-shadow: 4px 3px 5px 0 rgb(199, 196, 213);
+}

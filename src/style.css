@@ -2,6 +2,7 @@
 @import url('./styles/mainpage.css');
 @import url('./styles/createpage.css');
 @import url('./styles/catalog.css');
+@import url('./styles/details.css');
 
 html {
     font: 16px/1.2 sans-serif;

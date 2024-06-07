@@ -5,10 +5,9 @@ import { Main } from './components/MainPage/Main';
 import { Footer } from './components/Footer';
 import { Create } from './components/Create';
 import { Catalog } from './components/Catalog';
+import { Details } from './components/Details';
 
 function App() {
-    const [count, setCount] = useState(0)
-
     return (
         <>
             <NavBar />
@@ -18,11 +17,12 @@ function App() {
                     <Route path='/' element={<Main />} />
                     <Route path='/create' element={<Create />} />
                     <Route path='/catalog' element={<Catalog />} />
+                    <Route path='/details/:id' element={<Details />}/>
                 </Routes>
 
             </main>
 
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }
