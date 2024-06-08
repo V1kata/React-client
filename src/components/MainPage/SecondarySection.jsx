@@ -38,11 +38,14 @@ export function SecondarySection() {
         slideImage(direction === 'next' ? 1 : -1);
     };
 
-    const imageWidth = 220; // Adjust according to your image width + margin (200 + 20)
+    const imageWidth = 220;
 
     const currentUser = users[currentUserIndex];
     const currentUserProjects = currentUser?.projects ?? [];
-    const bestProject = currentUserProjects?.project[0].details ?? 'No projects available';
+
+    const bestProject = currentUserProjects.project?.length > 0 && Array.isArray(currentUserProjects.project) 
+        ? currentUserProjects.project[0]?.details 
+        : 'No projects available';
 
     return (
         <section className="second-main">
